@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Just For Us ❤️</title>
+
+  <!-- CSS -->
+  <link
+          rel="stylesheet"
+          th:href="@{/css/login.css}"
+  >
+
+</head>
+
+
+<body>
+
+
+<div class="login-container">
+
+  <div class="heart">
+    ♥
+  </div>
+
+
+  <h1>
+    Just For Us
+  </h1>
+
+
+  <p class="subtitle">
+    A little place that belongs to us.
+  </p>
+
+
+  <!-- ============================= -->
+  <!-- LOGIN FORM -->
+  <!-- ============================= -->
+
+  <form
+          th:action="@{/login}"
+          method="post"
+  >
+
+    <!-- ============================= -->
+    <!-- CSRF TOKEN -->
+    <!-- ============================= -->
+
+    <input
+            type="hidden"
+            th:name="${_csrf.parameterName}"
+            th:value="${_csrf.token}"
+    >
+
+
+    <!-- ============================= -->
+    <!-- USERNAME -->
+    <!-- ============================= -->
+
+    <div class="input-group">
+
+      <label for="username">
+        Username
+      </label>
+
+      <input
+              type="text"
+              id="username"
+              name="username"
+              placeholder="Enter username"
+              required
+      >
+
+    </div>
+
+
+    <!-- ============================= -->
+    <!-- PASSWORD -->
+    <!-- ============================= -->
+
+    <div class="input-group">
+
+      <label for="password">
+        Password
+      </label>
+
+      <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Enter password"
+              required
+      >
+
+    </div>
+
+
+    <!-- ============================= -->
+    <!-- LOGIN BUTTON -->
+    <!-- ============================= -->
+
+    <button type="submit">
+      Enter ❤️
+    </button>
+
+  </form>
+
+
+  <!-- ============================= -->
+  <!-- LOGIN ERROR -->
+  <!-- ============================= -->
+
+  <p
+          th:if="${param.error}"
+          class="error"
+  >
+    Wrong username or password ❤️
+  </p>
+
+
+  <p class="footer">
+    Made with love, just for you. ❤️
+  </p>
+
+
+</div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,659 @@
+/* ========================================
+   RESET
+======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* ========================================
+   BODY
+======================================== */
+
+body {
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #5c1f2e 0%,
+            #32111b 45%,
+            #1b0a10 100%
+        );
+
+    color: #fff4f5;
+}
+
+
+/* ========================================
+   NAVBAR
+======================================== */
+
+.navbar {
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 8%;
+
+    background: rgba(20, 5, 10, 0.65);
+
+    backdrop-filter: blur(10px);
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+    position: sticky;
+    top: 0;
+
+    z-index: 50;
+}
+
+
+.logo {
+    font-family: "Playfair Display", serif;
+
+    font-size: 1.3rem;
+
+    font-weight: 600;
+
+    color: #fff4f5;
+}
+
+
+.nav-links {
+    display: flex;
+
+    gap: 25px;
+}
+
+
+.nav-links a {
+    color: #f8dfe3;
+
+    text-decoration: none;
+
+    font-family: "Playfair Display", serif;
+
+    transition: 0.3s ease;
+}
+
+
+.nav-links a:hover {
+    color: #ff9eac;
+}
+
+
+.nav-links a.active {
+    color: #ff9eac;
+}
+
+
+/* ========================================
+   MEMORIES PAGE
+======================================== */
+
+.memories-page {
+    min-height: calc(100vh - 70px);
+
+    padding: 70px 20px 100px;
+}
+
+
+.page-title {
+    text-align: center;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 2.6rem;
+
+    font-weight: 500;
+
+    color: #fff4f5;
+
+    margin-bottom: 10px;
+}
+
+
+.subtitle {
+    text-align: center;
+
+    font-family: "Caveat", cursive;
+
+    font-size: 1.5rem;
+
+    color: #e9bfc6;
+
+    margin-bottom: 65px;
+}
+
+
+/* ========================================
+   MEMORY GRID
+======================================== */
+
+.memories {
+    max-width: 1000px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 70px 45px;
+}
+
+
+/* ========================================
+   MEMORY ITEM
+======================================== */
+
+.memory {
+    text-align: center;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.35s ease,
+        filter 0.35s ease;
+}
+
+
+.memory:hover {
+    transform: translateY(-12px) rotate(1deg);
+
+    filter:
+        drop-shadow(0 15px 20px rgba(0, 0, 0, 0.35));
+}
+
+
+/* ========================================
+   ENVELOPE
+======================================== */
+
+.envelope {
+    height: 180px;
+
+    position: relative;
+
+    background: #f5d8c9;
+
+    border-radius: 5px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 15px 30px rgba(0, 0, 0, 0.35);
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+
+.memory:hover .envelope {
+    box-shadow:
+        0 22px 40px rgba(0, 0, 0, 0.45);
+}
+
+
+/* ========================================
+   ENVELOPE LOWER FOLDS
+======================================== */
+
+.envelope::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            145deg,
+            transparent 49%,
+            #d8a99e 50%,
+            transparent 51%
+        ),
+
+        linear-gradient(
+            215deg,
+            transparent 49%,
+            #d8a99e 50%,
+            transparent 51%
+        );
+
+    z-index: 1;
+}
+
+
+/* ========================================
+   ENVELOPE FLAP
+======================================== */
+
+.flap {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 105px;
+
+    background: #e8bdb1;
+
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        50% 78%
+    );
+
+    transform-origin: top center;
+
+    transition:
+        transform 0.6s ease;
+
+    z-index: 3;
+}
+
+
+/* Open flap slightly when hovering */
+
+.memory:hover .flap {
+    transform: rotateX(25deg);
+}
+
+
+/* ========================================
+   HEART ON ENVELOPE
+======================================== */
+
+.envelope-heart {
+    position: absolute;
+
+    left: 50%;
+    top: 52%;
+
+    transform:
+        translate(-50%, -50%);
+
+    font-size: 2rem;
+
+    color: #9b3047;
+
+    z-index: 4;
+
+    transition:
+        transform 0.3s ease;
+}
+
+
+.memory:hover .envelope-heart {
+    transform:
+        translate(-50%, -50%)
+        scale(1.15);
+}
+
+
+/* ========================================
+   MEMORY TITLE
+======================================== */
+
+.memory-title {
+    margin-top: 18px;
+
+    font-family: "Caveat", cursive;
+
+    font-size: 1.6rem;
+
+    font-weight: 500;
+
+    color: #ffe1e5;
+}
+
+
+/* ========================================
+   LETTER MODAL
+======================================== */
+
+.letter-modal {
+    position: fixed;
+
+    inset: 0;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    background: rgba(20, 5, 10, 0.82);
+
+    backdrop-filter: blur(8px);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition:
+        opacity 0.4s ease,
+        visibility 0.4s ease;
+
+    z-index: 100;
+}
+
+
+.letter-modal.show {
+    opacity: 1;
+
+    visibility: visible;
+}
+
+
+/* ========================================
+   LETTER PAPER
+======================================== */
+
+.letter-paper {
+    width: min(700px, 90%);
+
+    max-height: 85vh;
+
+    overflow-y: auto;
+
+    position: relative;
+
+    padding: 60px;
+
+    background:
+        repeating-linear-gradient(
+            transparent,
+            transparent 31px,
+            rgba(140, 80, 80, 0.10) 32px
+        ),
+
+        #fff8ed;
+
+    color: #44262b;
+
+    border-radius: 2px;
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.55);
+
+    transform:
+        translateY(80px)
+        scale(0.85)
+        rotate(-2deg);
+
+    opacity: 0;
+
+    transition:
+        transform 0.6s cubic-bezier(.17, .67, .24, 1.2),
+        opacity 0.4s ease;
+}
+
+
+/* Letter opening animation */
+
+.letter-modal.show .letter-paper {
+    transform:
+        translateY(0)
+        scale(1)
+        rotate(-0.5deg);
+
+    opacity: 1;
+}
+
+
+/* ========================================
+   LETTER PAPER BORDER
+======================================== */
+
+.letter-paper::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 12px;
+
+    border: 1px solid rgba(120, 60, 60, 0.18);
+
+    pointer-events: none;
+}
+
+
+/* ========================================
+   LETTER DATE
+======================================== */
+
+.letter-date {
+    text-align: right;
+
+    font-family: "Caveat", cursive;
+
+    font-size: 1.3rem;
+
+    color: #95636a;
+
+    margin-bottom: 25px;
+}
+
+
+/* ========================================
+   LETTER TITLE
+======================================== */
+
+.letter-paper h2 {
+    text-align: center;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 2rem;
+
+    font-weight: 500;
+
+    color: #6b2636;
+
+    margin-bottom: 40px;
+}
+
+
+/* ========================================
+   LETTER CONTENT
+======================================== */
+
+.letter-text {
+    font-family: "Caveat", cursive;
+
+    font-size: 1.55rem;
+
+    line-height: 1.7;
+
+    color: #44262b;
+
+    white-space: pre-line;
+}
+
+
+/* ========================================
+   SIGNATURE
+======================================== */
+
+.signature {
+    margin-top: 40px;
+
+    text-align: right;
+
+    font-family: "Caveat", cursive;
+
+    font-size: 1.7rem;
+
+    color: #762337;
+}
+
+
+/* ========================================
+   CLOSE BUTTON
+======================================== */
+
+.close-button {
+    position: absolute;
+
+    top: 15px;
+    right: 20px;
+
+    width: 40px;
+    height: 40px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #762337;
+
+    font-size: 2rem;
+
+    line-height: 40px;
+
+    cursor: pointer;
+
+    z-index: 5;
+
+    transition:
+        transform 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.close-button:hover {
+    color: #b52f4d;
+
+    transform: rotate(90deg);
+}
+
+
+/* ========================================
+   SCROLLBAR INSIDE LETTER
+======================================== */
+
+.letter-paper::-webkit-scrollbar {
+    width: 6px;
+}
+
+
+.letter-paper::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+
+.letter-paper::-webkit-scrollbar-thumb {
+    background: #d8a3a9;
+
+    border-radius: 10px;
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 768px) {
+
+    .navbar {
+        height: auto;
+
+        padding: 18px 20px;
+
+        flex-direction: column;
+
+        gap: 12px;
+    }
+
+
+    .nav-links {
+        gap: 15px;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+
+
+    .nav-links a {
+        font-size: 0.9rem;
+    }
+
+
+    .memories-page {
+        padding:
+            45px
+            15px
+            80px;
+    }
+
+
+    .page-title {
+        font-size: 2rem;
+    }
+
+
+    .subtitle {
+        font-size: 1.35rem;
+
+        margin-bottom: 45px;
+    }
+
+
+    .memories {
+        grid-template-columns: 1fr;
+
+        max-width: 350px;
+
+        gap: 50px;
+
+        margin: auto;
+    }
+
+
+    .envelope {
+        height: 175px;
+    }
+
+
+    .letter-paper {
+        width: 95%;
+
+        max-height: 88vh;
+
+        padding:
+            50px
+            28px
+            45px;
+    }
+
+
+    .letter-paper h2 {
+        font-size: 1.65rem;
+
+        margin-bottom: 30px;
+    }
+
+
+    .letter-text {
+        font-size: 1.35rem;
+
+        line-height: 1.65;
+    }
+
+
+    .signature {
+        font-size: 1.5rem;
+    }
+}

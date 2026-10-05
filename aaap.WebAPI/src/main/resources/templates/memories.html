@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Our Memories ❤️</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap"
+          rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet"
+          th:href="@{/css/memories.css}">
+
+</head>
+
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        Just For Us ❤️
+    </div>
+
+    <div class="nav-links">
+
+        <a href="/home">
+            Home
+        </a>
+
+        <a href="/memories"
+           class="active">
+            Memories
+        </a>
+
+        <a href="/gallery">
+            Gallery
+        </a>
+
+        <a href="/letter">
+            Letter
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- PAGE -->
+
+<main class="memories-page">
+
+    <h1 class="page-title">
+        Our Little Memories ❤️
+    </h1>
+
+    <p class="subtitle">
+        Some moments deserve their own little letter.
+    </p>
+
+
+    <!-- MEMORY ENVELOPES -->
+    <div class="memories">
+
+        <div class="memory"
+             th:each="memory : ${memories}"
+             th:attr="data-id=${memory.id}">
+
+            <div class="envelope">
+
+                <div class="flap"></div>
+
+                <div class="envelope-heart">
+                    ♥
+                </div>
+
+            </div>
+
+            <h3 class="memory-title"
+                th:text="${memory.title}">
+                Memory Title
+            </h3>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<!-- LETTER MODAL -->
+
+<div id="letterModal"
+     class="letter-modal">
+
+    <div class="letter-paper">
+
+        <button class="close-button"
+                onclick="closeLetter()">
+            ×
+        </button>
+
+        <p id="letterDate"
+           class="letter-date">
+        </p>
+
+        <h2 id="letterTitle">
+        </h2>
+
+        <div id="letterText"
+             class="letter-text">
+        </div>
+
+        <div class="signature">
+            Yours always ❤️
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- JavaScript -->
+
+<script th:src="@{/js/memories.js}"></script>
+
+</body>
+
+</html>

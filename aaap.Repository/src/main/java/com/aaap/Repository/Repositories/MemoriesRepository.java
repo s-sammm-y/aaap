@@ -12,7 +12,7 @@ public class MemoriesRepository implements IMemoriesRepository {
 
             new Memory(
                     "beginning",
-                    "The Beginning ❤️",
+                    "Th Beginning ❤️",
                     "The day we met",
                     """
                     I didn't know that meeting you

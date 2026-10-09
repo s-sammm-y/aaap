@@ -72,6 +72,10 @@ body {
     gap: 25px;
 }
 
+a {
+    text-decoration: none;
+}
+
 
 .nav-links a {
     text-decoration: none;

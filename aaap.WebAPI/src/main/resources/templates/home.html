@@ -3,7 +3,6 @@
       xmlns:th="http://www.thymeleaf.org">
 
 <head>
-
     <meta charset="UTF-8">
 
     <meta name="viewport"
@@ -22,7 +21,6 @@
 
     <link rel="stylesheet"
           th:href="@{/css/home.css}">
-
 </head>
 
 <body>
@@ -34,12 +32,10 @@
     </div>
 
     <div class="nav-links">
-
-        <a href="/home">Home</a>
-        <a href="/memories">Memories</a>
-        <a href="/gallery">Gallery</a>
-        <a href="/letter">Letter</a>
-
+        <a th:href="@{/home}">Home</a>
+        <a th:href="@{/memories}">Memories</a>
+        <a th:href="@{/gallery}">Gallery</a>
+        <a th:href="@{/letter}">Letter</a>
     </div>
 
 </nav>
@@ -63,12 +59,12 @@
 
     <div class="hero-buttons">
 
-        <a href="/memories"
+        <a th:href="@{/memories}"
            class="btn btn-primary">
             Our Memories ❤️
         </a>
 
-        <a href="/letter"
+        <a th:href="@{/letter}"
            class="btn btn-secondary">
             Read My Letter
         </a>
@@ -88,7 +84,9 @@
 
     <div class="cards">
 
-        <div class="card">
+        <!-- Our Memories -->
+        <a th:href="@{/memories}"
+           class="card memory-card">
 
             <div class="card-icon">
                 📸
@@ -101,35 +99,62 @@
                 some of my favourite memories.
             </p>
 
-        </div>
+            <p class="card-link">
+                Revisit our memories →
+            </p>
+
+        </a>
 
 
+        <!-- Kiss Me If You Can -->
         <div class="card">
 
-            <a th:href="@{/kiss-game}" class="memory-card">
+            <a th:href="@{/kiss-game}"
+               class="memory-card">
+
                 <div class="memory-icon">💋</div>
+
                 <h3>Kiss Me If You Can</h3>
-                <p>A little game made just for you, baby ❤️</p>
-                <p>Play our game →</p>
+
+                <p>
+                    A little game made just for you, baby ❤️
+                </p>
+
+                <p class="card-link">
+                    Play our game →
+                </p>
+
             </a>
 
         </div>
 
 
-        <div class="card">
+        <!-- Our Time Together -->
+        <a th:href="@{/together}"
+           class="card relationship-card">
 
             <div class="card-icon">
-                🕰️
+                ⏳
             </div>
 
-            <h3>Our Story</h3>
+            <h3>Our Time Together</h3>
 
             <p>
-                From the beginning until now,
-                every chapter of us.
+                Every second with you is my favourite. ❤️
             </p>
 
-        </div>
+            <div class="timer-preview">
+
+                <span class="preview-heart">💕</span>
+
+                <p>
+                    Counting every moment since
+                    19 October 2022.
+                </p>
+
+            </div>
+
+        </a>
 
     </div>
 
@@ -137,11 +162,8 @@
 
 
 <footer>
-
     Made with love, just for you. ❤️
-
 </footer>
 
 </body>
-
 </html>

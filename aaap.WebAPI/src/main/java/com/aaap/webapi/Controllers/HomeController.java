@@ -35,4 +35,14 @@ public class HomeController {
         model.addAttribute("letter", letter);
         return "letter";
     }
+
+    @GetMapping("/gallery")
+    public String gallery() {
+        return "gallery";
+    }
+
+    @GetMapping("/together")
+    public String together() {
+        return "together";
+    }
 }

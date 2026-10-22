@@ -1,3 +1,4 @@
+
 * {
     box-sizing: border-box;
 }
@@ -14,6 +15,10 @@ body {
 a {
     text-decoration: none;
     color: inherit;
+}
+
+button {
+    -webkit-tap-highlight-color: transparent;
 }
 
 .page {
@@ -97,15 +102,11 @@ h1 {
 
 .board {
     display: grid;
-
-    /* Exactly 5 equal columns and 5 equal rows */
     grid-template-columns: repeat(5, minmax(0, 1fr));
     grid-template-rows: repeat(5, minmax(0, 1fr));
-
     width: 100%;
     height: 100%;
     aspect-ratio: 1 / 1;
-
     overflow: hidden;
     border-radius: 9px;
     border: 1px solid #edb7cc;
@@ -117,34 +118,27 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-
     width: 100%;
     height: 100%;
     min-width: 0;
     min-height: 0;
-
     overflow: hidden;
     box-sizing: border-box;
-
     background: #fff9fb;
     border-right: 1px solid #f5dce6;
     border-bottom: 1px solid #f5dce6;
-
     font-size: clamp(16px, 5vw, 25px);
     line-height: 1;
 }
 
-/* Emoji cannot change cell dimensions */
 .cell > span {
     display: flex;
     align-items: center;
     justify-content: center;
-
     width: 100%;
     height: 100%;
     min-width: 0;
     min-height: 0;
-
     line-height: 1;
     white-space: nowrap;
     pointer-events: none;
@@ -238,6 +232,7 @@ h1 {
     cursor: pointer;
     box-shadow: 0 5px 14px rgba(201, 78, 123, 0.2);
     touch-action: manipulation;
+    transition: transform 0.2s ease;
 }
 
 .reset-button:hover {
@@ -249,6 +244,308 @@ h1 {
     font-family: 'Caveat', cursive;
     font-size: 20px;
     color: #bf6c8d;
+}
+
+/* =================================
+   ROMANTIC VICTORY CELEBRATION
+   ================================= */
+
+.victory-screen {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    margin-top: 24px;
+    padding: 32px 16px;
+    border: 1px solid rgba(232, 126, 164, 0.4);
+    border-radius: 24px;
+    background:
+        radial-gradient(ellipse at top, #fff0f5 0%, transparent 70%),
+        linear-gradient(145deg, #fffafa, #ffe8ef, #fff5f7);
+    box-shadow: 0 12px 38px rgba(190, 77, 119, 0.13);
+    animation: victoryAppear 0.9s ease-out both;
+}
+
+.victory-content {
+    position: relative;
+    z-index: 2;
+    max-width: 480px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.victory-badge {
+    display: grid;
+    place-items: center;
+    width: 82px;
+    height: 82px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #ffcedd, #ff8fb2);
+    box-shadow: 0 0 0 10px rgba(255, 180, 204, 0.2);
+    font-size: 40px;
+    animation: kissPulse 1.5s ease-in-out infinite;
+}
+
+.victory-eyebrow {
+    margin: 0;
+    color: #b54d73;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.victory-title {
+    margin: 14px 0;
+    color: #8e3659;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(25px, 6vw, 34px);
+    line-height: 1.35;
+    animation: titleReveal 1s ease-out both;
+}
+
+.victory-description {
+    max-width: 350px;
+    margin: 16px auto;
+    color: #765361;
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+.love-divider {
+    margin: 20px 0;
+    color: #db7398;
+    font-size: 22px;
+    letter-spacing: 4px;
+}
+
+.reward-button {
+    max-width: 100%;
+    padding: 13px 20px;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #dc7098, #bd4f7b);
+    box-shadow: 0 7px 20px rgba(189, 79, 123, 0.25);
+    color: white;
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.reward-button:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(189, 79, 123, 0.35);
+}
+
+.reward-button:focus-visible {
+    outline: 3px solid #8e3659;
+    outline-offset: 4px;
+}
+
+.reward-button:disabled {
+    cursor: default;
+}
+
+/* Hidden love letter */
+
+.love-reward {
+    margin-top: 24px;
+    padding: 22px 17px;
+    border: 1px solid #f2c4d5;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #765361;
+    font-family: 'Caveat', cursive;
+    font-size: 21px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+    box-shadow: 0 8px 24px rgba(160, 75, 106, 0.1);
+}
+
+.love-reward:not([hidden]) {
+    animation: letterReveal 0.75s ease-out both;
+}
+
+.reward-heading {
+    margin-top: 0;
+    color: #b54d73;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.reward-signature {
+    margin-bottom: 0;
+    margin-top: 18px;
+    color: #b54d73;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+/* Floating hearts */
+
+.celebration-hearts {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.celebration-hearts span {
+    position: absolute;
+    bottom: -45px;
+    left: var(--left, 10%);
+    font-size: var(--size, 24px);
+    opacity: 0;
+    animation: heartFloat var(--duration, 5s) ease-in infinite;
+    animation-delay: var(--delay, 0s);
+}
+
+.celebration-hearts span:nth-child(1) {
+    --left: 8%;
+    --size: 25px;
+    --duration: 5s;
+    --delay: 0s;
+}
+
+.celebration-hearts span:nth-child(2) {
+    --left: 22%;
+    --size: 32px;
+    --duration: 6s;
+    --delay: 0.8s;
+}
+
+.celebration-hearts span:nth-child(3) {
+    --left: 39%;
+    --size: 20px;
+    --duration: 4.5s;
+    --delay: 0.3s;
+}
+
+.celebration-hearts span:nth-child(4) {
+    --left: 55%;
+    --size: 25px;
+    --duration: 5.5s;
+    --delay: 1.4s;
+}
+
+.celebration-hearts span:nth-child(5) {
+    --left: 70%;
+    --size: 30px;
+    --duration: 4.8s;
+    --delay: 0.5s;
+}
+
+.celebration-hearts span:nth-child(6) {
+    --left: 85%;
+    --size: 22px;
+    --duration: 5.8s;
+    --delay: 1s;
+}
+
+.celebration-hearts span:nth-child(7) {
+    --left: 95%;
+    --size: 28px;
+    --duration: 4.7s;
+    --delay: 2s;
+}
+
+.celebration-hearts span:nth-child(8) {
+    --left: 48%;
+    --size: 26px;
+    --duration: 6.2s;
+    --delay: 2.3s;
+}
+
+/* Animation keyframes */
+
+@keyframes victoryAppear {
+    from {
+        opacity: 0;
+        transform: translateY(24px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes kissPulse {
+    0%, 100% {
+        transform: scale(1) rotate(-5deg);
+    }
+
+    50% {
+        transform: scale(1.1) rotate(5deg);
+    }
+}
+
+@keyframes titleReveal {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes heartFloat {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 0.8;
+    }
+
+    85% {
+        opacity: 0.65;
+    }
+
+    100% {
+        transform: translateY(-430px) rotate(35deg);
+        opacity: 0;
+    }
+}
+
+@keyframes letterReveal {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Accessibility: respect reduced-motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+    .victory-screen,
+    .victory-title,
+    .victory-badge,
+    .celebration-hearts span,
+    .love-reward:not([hidden]) {
+        animation: none;
+    }
+
+    .reward-button,
+    .reset-button {
+        transition: none;
+    }
+
+    .reward-button:hover:not(:disabled),
+    .reset-button:hover {
+        transform: none;
+    }
 }
 
 @media (max-width: 360px) {
@@ -266,5 +563,19 @@ h1 {
 
     .cell {
         font-size: clamp(15px, 5vw, 20px);
+    }
+
+    .victory-screen {
+        padding: 28px 12px;
+    }
+
+    .victory-eyebrow {
+        font-size: 9px;
+        letter-spacing: 1.5px;
+    }
+
+    .reward-button {
+        padding: 12px 14px;
+        font-size: 12px;
     }
 }

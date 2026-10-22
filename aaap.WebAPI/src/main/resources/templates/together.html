@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Our Time Together ❤️</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+    <link rel="stylesheet" th:href="@{/css/together.css}">
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="logo">Just For Us 💗</div>
+
+    <div class="nav-links">
+        <a th:href="@{/home}">Home</a>
+        <a th:href="@{/memories}">Memories</a>
+        <a th:href="@{/gallery}">Gallery</a>
+        <a th:href="@{/letter}">Letter</a>
+    </div>
+</nav>
+
+<main class="together-container">
+
+    <a th:href="@{/home}" class="back-link">← Back to our little world</a>
+
+    <div class="heart-decoration">♡</div>
+
+    <h1>Every Second With You</h1>
+
+    <p class="together-subtitle">
+        From the day our story began, every moment has been special.
+    </p>
+
+    <p class="since-text">Together since 19 October 2022 ❤️</p>
+
+    <div class="timer-grid">
+
+        <div class="timer-box">
+            <span id="years">0</span>
+            <small>Years</small>
+        </div>
+
+        <div class="timer-box">
+            <span id="days">0</span>
+            <small>Days</small>
+        </div>
+
+        <div class="timer-box">
+            <span id="hours">00</span>
+            <small>Hours</small>
+        </div>
+
+        <div class="timer-box">
+            <span id="minutes">00</span>
+            <small>Minutes</small>
+        </div>
+
+        <div class="timer-box seconds-box">
+            <span id="seconds">00</span>
+            <small>Seconds</small>
+        </div>
+
+    </div>
+
+    <p class="forever-message">
+        And if I could start all over again,<br>
+        I'd still choose you. Every single time. 💖
+    </p>
+
+    <div class="floating-heart">💕</div>
+
+</main>
+
+<script th:src="@{/js/together.js}"></script>
+
+</body>
+</html>

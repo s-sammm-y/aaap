@@ -1,0 +1,143 @@
+.together-container {
+    max-width: 900px;
+    margin: 55px auto;
+    padding: 30px 24px;
+    text-align: center;
+    color: #fff0f4;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 35px;
+    color: #f5c2d0;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.back-link:hover {
+    color: #ffffff;
+}
+
+.heart-decoration {
+    color: #ff8fab;
+    font-size: 48px;
+}
+
+.together-container h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 48px);
+    margin: 12px 0;
+}
+
+.together-subtitle {
+    font-family: 'Caveat', cursive;
+    font-size: 25px;
+    color: #f4b5c7;
+    margin: 12px 0 25px;
+}
+
+.since-text {
+    color: #f7dce4;
+    font-size: 15px;
+    margin-bottom: 35px;
+}
+
+.timer-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 15px;
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+.timer-box {
+    padding: 28px 10px;
+    border: 1px solid rgba(255, 210, 224, 0.25);
+    border-radius: 18px;
+    background: linear-gradient(145deg, #42232e, #2b131c);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.timer-box span {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 43px);
+    color: #ffb5c8;
+    font-variant-numeric: tabular-nums;
+}
+
+.timer-box small {
+    display: block;
+    margin-top: 10px;
+    color: #f2d3dc;
+    font-size: 13px;
+}
+
+.forever-message {
+    margin-top: 45px;
+    font-family: 'Caveat', cursive;
+    font-size: 30px;
+    line-height: 1.5;
+    color: #ffc1d1;
+}
+
+.floating-heart {
+    margin-top: 15px;
+    font-size: 35px;
+}
+
+.relationship-card {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.relationship-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(255, 143, 171, 0.12);
+}
+
+.timer-preview {
+    margin-top: 24px;
+}
+
+.timer-preview > span {
+    font-size: 36px;
+}
+
+.timer-preview p {
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.timer-preview small {
+    display: inline-block;
+    margin-top: 10px;
+    color: #ffb5c8;
+}
+
+@media (max-width: 650px) {
+    .together-container {
+        margin: 25px auto;
+        padding: 20px 16px;
+    }
+
+    .timer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .seconds-box {
+        grid-column: 1 / -1;
+    }
+
+    .timer-box {
+        padding: 22px 8px;
+    }
+
+    .forever-message {
+        font-size: 26px;
+    }
+}

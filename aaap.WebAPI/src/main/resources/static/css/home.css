@@ -281,6 +281,84 @@ a {
     margin-bottom: 45px;
 }
 
+/*
+Timer
+*/
+
+/* Relationship timer card */
+
+.relationship-card {
+    text-align: center;
+}
+
+.timer-subtitle {
+    color: #8b777d;
+    font-size: 14px;
+    margin: 8px 0 18px;
+}
+
+.relationship-timer {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.timer-unit {
+    flex: 1 1 55px;
+    min-width: 48px;
+    padding: 12px 5px;
+    background: #fff1f4;
+    border: 1px solid #f4dce3;
+    border-radius: 10px;
+}
+
+.timer-unit span {
+    display: block;
+    color: #c47789;
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+
+.timer-unit small {
+    display: block;
+    margin-top: 6px;
+    color: #8b777d;
+    font-size: 11px;
+}
+
+.timer-footer {
+    color: #c47789;
+    font-family: 'Caveat', cursive;
+    font-size: 23px;
+    margin-top: 15px;
+}
+
+/* Smaller screens */
+
+@media (max-width: 480px) {
+    .relationship-timer {
+        gap: 6px;
+    }
+
+    .timer-unit {
+        flex-basis: 45px;
+        min-width: 0;
+        padding: 10px 3px;
+    }
+
+    .timer-unit span {
+        font-size: 20px;
+    }
+
+    .timer-unit small {
+        font-size: 10px;
+    }
+}
 
 /* ================================
    MEMORY CARDS

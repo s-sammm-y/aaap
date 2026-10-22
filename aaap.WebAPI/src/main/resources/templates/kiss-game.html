@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
           rel="stylesheet">
+
     <link rel="stylesheet" th:href="@{/css/kiss-game.css}">
 </head>
 
@@ -109,16 +110,71 @@
                 </div>
             </div>
 
-            <!-- Winning message -->
-            <div th:if="${game.finished}">
-                <p class="game-message">
-                    You found me, baby! 💋❤️
-                </p>
+            <!-- Romantic victory celebration -->
+            <div th:if="${game.finished}" class="victory-screen">
 
-                <p class="message-description">
-                    You collected every heart and made it to me.
-                    Your reward is unlimited hugs and kisses. 🥹💕
-                </p>
+                <!-- Floating hearts and kisses -->
+                <div class="celebration-hearts" aria-hidden="true">
+                    <span>💗</span>
+                    <span>💋</span>
+                    <span>💕</span>
+                    <span>✨</span>
+                    <span>❤️</span>
+                    <span>💖</span>
+                    <span>💋</span>
+                    <span>💘</span>
+                </div>
+
+                <div class="victory-content">
+
+                    <div class="victory-badge">💋</div>
+
+                    <p class="victory-eyebrow">
+                        MISSION ACCOMPLISHED, BABY
+                    </p>
+
+                    <h2 class="victory-title">
+                        You Found Your Way<br>
+                        Into My Heart ❤️
+                    </h2>
+
+                    <p class="victory-description">
+                        Every heart collected, every step taken...
+                        and somehow, I'd still choose you
+                        in every little universe. 🥹
+                    </p>
+
+                    <div class="love-divider">
+                        ♡ &nbsp; ♡ &nbsp; ♡
+                    </div>
+
+                    <button type="button"
+                            class="reward-button"
+                            id="revealReward">
+                        Open Your Little Reward 💌
+                    </button>
+
+                    <!-- Hidden until the reward button is clicked -->
+                    <div id="loveReward" class="love-reward" hidden>
+
+                        <p class="reward-heading">
+                            A little secret from my heart...
+                        </p>
+
+                        <p>
+                            If I could give you one thing in this world,
+                            I'd give you the ability to see yourself
+                            through my eyes. Only then would you realise
+                            how incredibly special you are to me. ❤️
+                        </p>
+
+                        <p class="reward-signature">
+                            Forever your favourite person 💋
+                        </p>
+
+                    </div>
+
+                </div>
             </div>
 
             <!-- Game in progress -->

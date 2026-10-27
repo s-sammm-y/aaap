@@ -83,7 +83,7 @@ document.addEventListener("click", function (event) {
     if (!button) {
         return;
     }
-    
+
 
     const reward = document.getElementById("loveReward");
 

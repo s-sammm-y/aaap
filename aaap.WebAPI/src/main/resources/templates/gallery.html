@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
@@ -24,10 +23,10 @@
   <div class="logo">Just For Us ❤️</div>
 
   <div class="nav-links">
-    <a href="/home">Home</a>
-    <a href="/memories">Memories</a>
-    <a href="/gallery" class="active">Gallery</a>
-    <a href="/letter">Letter</a>
+    <a th:href="@{/home}">Home</a>
+    <a th:href="@{/memories}">Memories</a>
+    <a th:href="@{/gallery}" class="active">Gallery</a>
+    <a th:href="@{/letter}">Letter</a>
   </div>
 </nav>
 
@@ -46,7 +45,7 @@
   </div>
 
   <div class="photo-count">
-    Moments captured, memories cherished ✨
+    11 moments captured, memories cherished ✨
   </div>
 </header>
 
@@ -61,15 +60,14 @@
 
   <section class="photo-grid">
 
+    <!-- Photo 1 -->
     <article class="photo-card">
-      <button class="photo-button"
-              type="button"
-              data-full="/images/gallery/memory1.jpg"
+      <button class="photo-button" type="button"
+              th:attr="data-full=@{/gallery/photo/memory1.jpg}"
               data-caption="One of my favourite memories ❤️"
-              aria-label="View our first memory">
-        <img th:src="@{/images/gallery/memory1.jpg}"
-             alt="Our favourite memory"
-             loading="lazy">
+              aria-label="View photo 1">
+        <img th:src="@{/gallery/photo/memory1.jpg}"
+             alt="Our first memory" loading="lazy">
         <span class="photo-overlay">♡ View Memory</span>
       </button>
       <div class="photo-caption">
@@ -78,15 +76,14 @@
       </div>
     </article>
 
+    <!-- Photo 2 -->
     <article class="photo-card">
-      <button class="photo-button"
-              type="button"
-              data-full="/images/gallery/memory2.jpg"
+      <button class="photo-button" type="button"
+              th:attr="data-full=@{/gallery/photo/memory2.jpg}"
               data-caption="Just you and me, always 💕"
-              aria-label="View our second memory">
-        <img th:src="@{/images/gallery/memory2.jpg}"
-             alt="A special moment together"
-             loading="lazy">
+              aria-label="View photo 2">
+        <img th:src="@{/gallery/photo/memory2.jpg}"
+             alt="A special moment together" loading="lazy">
         <span class="photo-overlay">♡ View Memory</span>
       </button>
       <div class="photo-caption">
@@ -95,15 +92,14 @@
       </div>
     </article>
 
+    <!-- Photo 3 -->
     <article class="photo-card">
-      <button class="photo-button"
-              type="button"
-              data-full="/images/gallery/memory3.jpg"
+      <button class="photo-button" type="button"
+              th:attr="data-full=@{/gallery/photo/memory3.jpg}"
               data-caption="A little moment, a lifetime of love 🌷"
-              aria-label="View our third memory">
-        <img th:src="@{/images/gallery/memory3.jpg}"
-             alt="A lovely day together"
-             loading="lazy">
+              aria-label="View photo 3">
+        <img th:src="@{/gallery/photo/memory3.jpg}"
+             alt="A lovely day together" loading="lazy">
         <span class="photo-overlay">♡ View Memory</span>
       </button>
       <div class="photo-caption">
@@ -112,20 +108,131 @@
       </div>
     </article>
 
+    <!-- Photo 4 -->
     <article class="photo-card">
-      <button class="photo-button"
-              type="button"
-              data-full="/images/gallery/memory4.jpg"
+      <button class="photo-button" type="button"
+              th:attr="data-full=@{/gallery/photo/memory4.jpg}"
               data-caption="You make my world a little brighter ✨"
-              aria-label="View our fourth memory">
-        <img th:src="@{/images/gallery/memory4.jpg}"
-             alt="A happy moment together"
-             loading="lazy">
+              aria-label="View photo 4">
+        <img th:src="@{/gallery/photo/memory4.jpg}"
+             alt="A happy moment together" loading="lazy">
         <span class="photo-overlay">♡ View Memory</span>
       </button>
       <div class="photo-caption">
         <h3>Your Smile</h3>
         <p>One of my favourite things in the world.</p>
+      </div>
+    </article>
+
+    <!-- Photo 5 -->
+    <article class="photo-card">
+      <button class="photo-button" type="button"
+              th:attr="data-full=@{/gallery/photo/memory5.jpg}"
+              data-caption="With you, even little things feel special 💗"
+              aria-label="View photo 5">
+        <img th:src="@{/gallery/photo/memory5.jpg}"
+             alt="A special memory" loading="lazy">
+        <span class="photo-overlay">♡ View Memory</span>
+      </button>
+      <div class="photo-caption">
+        <h3>Little Moments</h3>
+        <p>The little things mean the most.</p>
+      </div>
+    </article>
+
+    <!-- Photo 6 -->
+    <article class="photo-card">
+      <button class="photo-button" type="button"
+              th:attr="data-full=@{/gallery/photo/memory6.jpg}"
+              data-caption="My favourite memories always have you in them ❤️"
+              aria-label="View photo 6">
+        <img th:src="@{/gallery/photo/memory6.jpg}"
+             alt="A memory with you" loading="lazy">
+        <span class="photo-overlay">♡ View Memory</span>
+      </button>
+      <div class="photo-caption">
+        <h3>My Favourite Person</h3>
+        <p>Every memory is better with you.</p>
+      </div>
+    </article>
+
+    <!-- Photo 7 -->
+    <article class="photo-card">
+      <button class="photo-button" type="button"
+              th:attr="data-full=@{/gallery/photo/memory7.jpg}"
+              data-caption="Anywhere feels like home when I'm with you 🏡"
+              aria-label="View photo 7">
+        <img th:src="@{/gallery/photo/memory7.jpg}"
+             alt="A day spent together" loading="lazy">
+        <span class="photo-overlay">♡ View Memory</span>
+      </button>
+      <div class="photo-caption">
+        <h3>Our Adventures</h3>
+        <p>Anywhere is beautiful with you.</p>
+      </div>
+    </article>
+
+    <!-- Photo 8 -->
+    <article class="photo-card">
+      <button class="photo-button" type="button"
+              th:attr="data-full=@{/gallery/photo/memory8.jpg}"
+              data-caption="If I could relive a moment, I'd choose one with you 🌷"
+              aria-label="View photo 8">
+        <img th:src="@{/gallery/photo/memory8.jpg}"
+             alt="A moment worth remembering" loading="lazy">
+        <span class="photo-overlay">♡ View Memory</span>
+      </button>
+      <div class="photo-caption">
+        <h3>Moments to Keep</h3>
+        <p>If only we could pause time.</p>
+      </div>
+    </article>
+
+    <!-- Photo 9 -->
+    <article class="photo-card">
+      <button class="photo-button" type="button"
+              th:attr="data-full=@{/gallery/photo/memory9.jpg}"
+              data-caption="You make even an ordinary day unforgettable ✨"
+              aria-label="View photo 9">
+        <img th:src="@{/gallery/photo/memory9.jpg}"
+             alt="An unforgettable day" loading="lazy">
+        <span class="photo-overlay">♡ View Memory</span>
+      </button>
+      <div class="photo-caption">
+        <h3>Unforgettable</h3>
+        <p>A memory my heart will always remember.</p>
+      </div>
+    </article>
+
+    <!-- Photo 10 -->
+    <article class="photo-card">
+      <button class="photo-button" type="button"
+              th:attr="data-full=@{/gallery/photo/memory10.jpg}"
+              data-caption="Four years of us, and still my favourite story 💕"
+              aria-label="View photo 10">
+        <img th:src="@{/gallery/photo/memory10.jpg}"
+             alt="A memory from our journey" loading="lazy">
+        <span class="photo-overlay">♡ View Memory</span>
+      </button>
+      <div class="photo-caption">
+        <h3>Our Journey</h3>
+        <p>Four years of memories and counting.</p>
+      </div>
+    </article>
+
+    <!-- Photo 11 -->
+    <article class="photo-card">
+      <button class="photo-button" type="button"
+              th:attr="data-full=@{/gallery/photo/memory11.jpg}"
+              data-caption="This is only a little piece of our forever. I love you ❤️"
+              aria-label="View photo 11">
+        <img th:src="@{/gallery/photo/memory11.jpg}"
+             alt="One more memory together" loading="lazy">
+        <span class="photo-overlay">♡ View Memory</span>
+      </button>
+      <div class="photo-caption">
+        <h3>To Our Forever</h3>
+        <p>This is only the beginning of our story.</p>
       </div>
     </article>
 
@@ -177,7 +284,7 @@
   Made with love, just for you. ❤️
 </footer>
 
-<script th:src="@{/js/gallery.js}"></script>
+<script th:src="@{/js/gallery.js}" defer></script>
 
 </body>
 </html>

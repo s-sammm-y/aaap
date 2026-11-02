@@ -1,3 +1,4 @@
+
 package com.aaap.Service.Services;
 
 import com.aaap.Service.Abstractions.IPhotoService;
@@ -10,6 +11,7 @@ import javax.crypto.spec.GCMParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 import java.io.InputStream;
 import java.util.Base64;
+import java.util.concurrent.Semaphore;
 
 @Service
 public class PhotoService implements IPhotoService {
@@ -18,6 +20,10 @@ public class PhotoService implements IPhotoService {
     private static final int TAG_LENGTH_BITS = 128;
 
     private final SecretKeySpec secretKey;
+
+    // Allow maximum 2 simultaneous decryptions
+    private final Semaphore photoSemaphore =
+            new Semaphore(2, true);
 
     public PhotoService(
             @Value("${photo.encryption.key}") String encodedKey) {
@@ -37,49 +43,53 @@ public class PhotoService implements IPhotoService {
     @Override
     public byte[] getPhoto(String filename) throws Exception {
 
-        // Accept image filenames such as memory1.jpg or memory2.png
-        if (filename == null ||
-                !filename.matches(
-                        "[A-Za-z0-9_-]+\\.(jpg|jpeg|png|webp)")) {
+        // Wait until a decryption slot becomes available
+        photoSemaphore.acquire();
 
-            throw new IllegalArgumentException(
-                    "Invalid photo filename"
+        try {
+
+            if (filename == null ||
+                    !filename.matches(
+                            "[A-Za-z0-9_-]+\\.(jpg|jpeg|png|webp)")) {
+
+                throw new IllegalArgumentException(
+                        "Invalid photo filename"
+                );
+            }
+
+            String baseFilename = filename.replaceFirst(
+                    "\\.(jpg|jpeg|png|webp)$", ""
             );
-        }
 
-        // memory1.jpg -> memory1.enc
-        // memory2.png -> memory2.enc
-        String baseFilename = filename.replaceFirst(
-                "\\.(jpg|jpeg|png|webp)$", ""
-        );
+            String encryptedFilename = baseFilename + ".enc";
 
-        String encryptedFilename = baseFilename + ".enc";
+            ClassPathResource resource = new ClassPathResource(
+                    "private-photos/" + encryptedFilename
+            );
 
-        // Read the encrypted file from resources/private-photos
-        ClassPathResource resource = new ClassPathResource(
-                "private-photos/" + encryptedFilename
-        );
+            try (InputStream input = resource.getInputStream()) {
 
-        try (InputStream input = resource.getInputStream()) {
+                byte[] encryptedData = input.readAllBytes();
 
-            byte[] encryptedData = input.readAllBytes();
+                return decryptPhoto(encryptedData);
+            }
 
-            // Decrypt the image and return its original bytes
-            return decryptPhoto(encryptedData);
+        } finally {
+
+            // Always release the slot, even if decryption fails
+            photoSemaphore.release();
         }
     }
 
     private byte[] decryptPhoto(byte[] encryptedData)
             throws Exception {
 
-        // 12-byte nonce + at least 16-byte authentication tag
         if (encryptedData.length < NONCE_LENGTH + 16) {
             throw new IllegalArgumentException(
                     "Invalid encrypted photo"
             );
         }
 
-        // Extract the nonce from the first 12 bytes
         byte[] nonce = new byte[NONCE_LENGTH];
 
         System.arraycopy(
@@ -87,7 +97,6 @@ public class PhotoService implements IPhotoService {
                 nonce, 0, NONCE_LENGTH
         );
 
-        // Remaining bytes contain ciphertext and GCM tag
         byte[] ciphertext = new byte[
                 encryptedData.length - NONCE_LENGTH
                 ];
@@ -97,7 +106,6 @@ public class PhotoService implements IPhotoService {
                 ciphertext, 0, ciphertext.length
         );
 
-        // Decrypt using AES-256-GCM
         Cipher cipher =
                 Cipher.getInstance("AES/GCM/NoPadding");
 

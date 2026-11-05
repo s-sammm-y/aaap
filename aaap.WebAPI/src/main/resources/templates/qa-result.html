@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>Our Little Result ❤️</title>
+
+  <link rel="stylesheet"
+        th:href="@{/css/qa-game.css}">
+</head>
+
+<body>
+
+<div class="game-container result-container">
+
+  <div class="heart">❤️</div>
+
+  <h1>You Made It!</h1>
+
+  <p class="subtitle">
+    You completed our little Q&Q Game challenge.
+  </p>
+
+  <div class="result-stats">
+
+    <h2>
+      <span th:text="${correctCount}"></span>
+      /
+      <span th:text="${totalQuestions}"></span>
+    </h2>
+
+    <p>Questions answered correctly</p>
+
+    <p>
+      Incorrect attempts:
+      <strong th:text="${incorrectAttempts}"></strong>
+    </p>
+
+  </div>
+
+  <h2>
+    Kheye Nebo Tomai. 💕
+  </h2>
+
+  <form th:action="@{/qa-game/restart}"
+        method="post">
+
+    <button type="submit">
+      Play Again ❤️
+    </button>
+
+  </form>
+
+  <a th:href="@{/home}">
+    Back to Our Little World
+  </a>
+
+</div>
+
+</body>
+</html>

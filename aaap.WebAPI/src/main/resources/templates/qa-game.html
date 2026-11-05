@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>Our Little Q&A ❤️</title>
+
+  <link rel="stylesheet"
+        th:href="@{/css/qa-game.css}">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+<div class="game-container">
+
+  <h1>How Well Do You Know Us? 💕</h1>
+
+  <p class="subtitle">
+    Every little detail tells our story.
+  </p>
+
+  <div class="progress">
+    Question
+    <span th:text="${questionNumber}"></span>
+    of
+    <span th:text="${totalQuestions}"></span>
+  </div>
+
+  <div th:if="${feedback != null}"
+       class="feedback"
+       th:classappend="${feedbackType}"
+       th:text="${feedback}">
+  </div>
+
+  <form th:action="@{/qa-game/answer}"
+        method="post">
+
+    <h2 th:text="${question.text}">
+    </h2>
+
+    <p class="instruction">
+      Select all the correct answers ❤️
+    </p>
+
+    <div class="options">
+
+      <label class="option"
+             th:each="option : ${question.options}">
+
+        <input type="checkbox"
+               name="selectedAnswers"
+               th:value="${option}">
+
+        <span th:text="${option}"></span>
+
+      </label>
+
+    </div>
+
+    <button type="submit">
+      Submit Answer ❤️
+    </button>
+
+  </form>
+
+</div>
+
+</body>
+</html>

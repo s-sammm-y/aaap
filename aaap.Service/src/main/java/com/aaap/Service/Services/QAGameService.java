@@ -30,11 +30,11 @@ public class QAGameService implements IQAGameService {
                         "Doo you mishhhhhhhhhh meee????????",
                         List.of(
                                 "Yes",
-                                "Onekkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk",
-                                "Akdom naaaaaaaaaaaaaaaaaaaaaaa",
+                                "Onekkkkkk",
+                                "Akdom naaaaaa",
                                 "Marboooooo"
                         ),
-                        Set.of("Onekkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk")
+                        Set.of("Onekkkkkk")
                 ),
 
                 new Question(
@@ -57,7 +57,7 @@ public class QAGameService implements IQAGameService {
                                 "22",
                                 "2",
                                 "3",
-                                "Jetaii bolbe bhul hobe eheheheheheehehhe"
+                                "Jetaii bolbe bhul hobe ehehe"
                         ),
                         Set.of("naN")
                 ),

@@ -18,6 +18,23 @@ body {
     color: #fff4f5;
 }
 
+.back-link {
+    align-self: flex-start;
+    margin-left: max(0px, calc((100% - 850px) / 2));
+    margin-bottom: 25px;
+
+    color: #e9bfc6;
+    font-family: "Playfair Display", serif;
+    font-size: 14px;
+
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.back-link:hover {
+    color: #ff9eac;
+    transform: translateX(-4px);
+}
+
 
 /* =========================
    NAVBAR
